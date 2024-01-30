@@ -25,7 +25,7 @@ const ImageSearch = () => {
         setImages(prevImages =>
           data.hits?.length ? [...prevImages, ...data.hits] : prevImages
         );
-        setTotalHits(data.totalHits || 0);
+        setTotalHits(data.totalHits);
         setError(null);
       } catch (error) {
         setError(error.message);

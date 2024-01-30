@@ -6,13 +6,19 @@ import styles from './modal.module.css';
 const modalRoot = document.getElementById('modal-root');
 
 const Modal = ({ close, children }) => {
-  const closeModal = ({ target, currentTarget, code }) => {
-    if (target === currentTarget || code === 'Escape') {
+  const closeModal = ({ target, currentTarget }) => {
+    if (target === currentTarget) {
       close();
     }
   };
 
   useEffect(() => {
+    const closeModal = ({ code }) => {
+      if (code === 'Escape') {
+        close();
+      }
+    };
+
     document.addEventListener('keydown', closeModal);
 
     return () => {
